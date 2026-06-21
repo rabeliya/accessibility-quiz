@@ -1,5 +1,4 @@
-// カテゴリA：大きな太字テキスト（24px以上）は 3:1 のコントラスト基準が適用される「good」パターン。
-// 3.95:1 のグレーが合格になることを体感させる。
+// カテゴリA：大きな太字テキスト（24px以上）のコントラスト判定を問う「good」パターン。
 export default function HeroCatchphrase({
   fontSize = 32,
   fontWeight = 'bold',
@@ -7,7 +6,6 @@ export default function HeroCatchphrase({
   backgroundColor = '#FFFFFF',
 }) {
   const isBold = fontWeight === 'bold' || Number(fontWeight) >= 700
-  const meetsLargeText = fontSize >= 24 || (fontSize >= 18.5 && isBold)
 
   return (
     <div
@@ -52,23 +50,19 @@ export default function HeroCatchphrase({
         </p>
       </div>
 
-      {/* 判定バッジ */}
+      {/* コントラスト比の情報のみ表示（合否判定は出さない） */}
       <div
         style={{
           padding: '8px 12px',
-          background: '#e8f5e9',
-          border: '1px solid #81c784',
+          background: '#f5f5f5',
+          border: '1px solid #e0e0e0',
           borderRadius: 6,
           fontSize: 12,
-          color: '#2e7d32',
+          color: '#555',
           lineHeight: 1.5,
         }}
       >
-        テキスト色 <strong>{textColor}</strong>（{fontSize}px {isBold ? '太字' : '通常'}）：
-        コントラスト比 約 3.95:1 ／{' '}
-        {meetsLargeText
-          ? '大きな文字の基準（3:1以上）を ✓ 満たしています'
-          : '通常テキスト基準（4.5:1）に未達'}
+        テキスト色 <strong>{textColor}</strong>（{fontSize}px {isBold ? '太字' : '通常'}）・コントラスト比 約 3.95:1
       </div>
     </div>
   )
