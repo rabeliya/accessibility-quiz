@@ -1,0 +1,110 @@
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 48px 20px 80px;
+}
+
+.head {
+  text-align: center;
+  padding: 24px 0 32px;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.score {
+  margin: 12px 0 4px;
+}
+
+.scoreNum {
+  font-size: 56px;
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.scoreTotal {
+  font-size: 24px;
+  color: var(--color-text-sub);
+}
+
+.rate {
+  margin: 0;
+  font-size: 14px;
+  color: var(--color-text-sub);
+}
+
+.comment {
+  margin: 16px 0 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.list {
+  list-style: none;
+  margin: 0 0 32px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+}
+
+.badge {
+  flex: none;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.ok {
+  background: var(--color-correct-weak);
+  color: var(--color-correct);
+}
+
+.ng {
+  background: var(--color-incorrect-weak);
+  color: var(--color-incorrect);
+}
+
+.itemText {
+  font-size: 13.5px;
+  line-height: 1.7;
+}
+
+.itemNo {
+  display: block;
+  font-size: 11px;
+  color: var(--color-text-sub);
+  font-weight: 600;
+}
+
+.retryBtn {
+  width: 100%;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.retryBtn:hover {
+  opacity: 0.92;
+}

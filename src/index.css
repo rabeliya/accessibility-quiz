@@ -1,0 +1,51 @@
+:root {
+  /* --- カラートークン --- */
+  --color-bg: #f5f6f8;
+  --color-surface: #ffffff;
+  --color-text: #1a1c20;
+  --color-text-sub: #5b606b;
+  --color-border: #e2e4e9;
+  --color-primary: #1f6feb;
+  --color-primary-weak: #e8f0fe;
+  --color-correct: #1a7f43;
+  --color-correct-weak: #e6f4ec;
+  --color-incorrect: #c2362f;
+  --color-incorrect-weak: #fbeae9;
+
+  /* --- タイポ --- */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Hiragino Sans",
+    "Hiragino Kaku Gothic ProN", "Noto Sans JP", Meiryo, sans-serif;
+
+  /* --- レイアウト --- */
+  --radius: 10px;
+  --max-w: 720px;
+
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* このコメントより上は共通シェルのトークン。
+   出題UI（カテゴリ専用コンポーネント）は src/quiz-ui/ 配下で
+   各自スタイルを完結させ、ここのトークンに依存しすぎないこと。 */
