@@ -11,6 +11,8 @@ const sameSet = (a, b) => {
   return [...a].sort().every((v, i) => v === sb[i])
 }
 
+const isTouch = window.matchMedia('(pointer: coarse)').matches
+
 export default function QuizScreen({ questions, category, onComplete, onQuit }) {
   const [index, setIndex] = useState(0)
   const [selected, setSelected] = useState(null)
@@ -27,10 +29,21 @@ export default function QuizScreen({ questions, category, onComplete, onQuit }) 
   const handleSelect = (id) => {
     if (answered) return
     setSelected(id)
+    if (!isTouch) {
+      setAnswered(true)
+      answersRef.current = [
+        ...answersRef.current,
+        { question, selected: id, isCorrect: sameSet([id], correctIds) },
+      ]
+    }
+  }
+
+  const handleConfirm = () => {
+    if (!selected || answered) return
     setAnswered(true)
     answersRef.current = [
       ...answersRef.current,
-      { question, selected: id, isCorrect: sameSet([id], correctIds) },
+      { question, selected, isCorrect: sameSet([selected], correctIds) },
     ]
   }
 
@@ -47,7 +60,7 @@ export default function QuizScreen({ questions, category, onComplete, onQuit }) 
   }
 
   const optionState = (id) => {
-    if (!answered) return 'default'
+    if (!answered) return id === selected ? 'pending' : 'default'
     if (correctIds.includes(id)) return 'correct'
     if (id === selected) return 'incorrect'
     return 'dimmed'
@@ -114,11 +127,18 @@ export default function QuizScreen({ questions, category, onComplete, onQuit }) 
         )}
       </main>
 
-      {answered && (
+      {(answered || (isTouch && selected)) && (
         <footer className={styles.footer}>
-          <button className={styles.nextBtn} onClick={handleNext}>
-            {index === questions.length - 1 ? '結果を見る' : '次の問題へ'}
-          </button>
+          {!answered && (
+            <button className={styles.confirmBtn} onClick={handleConfirm}>
+              この回答で確定する
+            </button>
+          )}
+          {answered && (
+            <button className={styles.nextBtn} onClick={handleNext}>
+              {index === questions.length - 1 ? '結果を見る' : '次の問題へ'}
+            </button>
+          )}
         </footer>
       )}
 

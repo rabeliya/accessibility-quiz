@@ -30,7 +30,13 @@
   box-sizing: border-box;
 }
 
-html,
+html {
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+  scrollbar-gutter: stable;
+}
+
 body {
   margin: 0;
   padding: 0;
