@@ -17,7 +17,6 @@ export default function QuizScreen({ questions, category, onComplete, onQuit }) 
   const [answered, setAnswered] = useState(false)
   const [showQuitDialog, setShowQuitDialog] = useState(false)
   const answersRef = useRef([])
-  const containerRef = useRef(null)
 
   const question = questions[index]
   const correctIds = getCorrectIds(question)
@@ -44,7 +43,7 @@ export default function QuizScreen({ questions, category, onComplete, onQuit }) 
     setIndex(next)
     setSelected(null)
     setAnswered(false)
-    containerRef.current?.scrollTo({ top: 0, behavior: 'instant' })
+    window.scrollTo({ top: 0, behavior: 'instant' })
   }
 
   const optionState = (id) => {
@@ -55,7 +54,7 @@ export default function QuizScreen({ questions, category, onComplete, onQuit }) 
   }
 
   return (
-    <div className={styles.container} ref={containerRef}>
+    <div className={styles.container}>
       <header className={styles.header}>
         <div className={styles.headerTop}>
           <span className={styles.progressText}>
