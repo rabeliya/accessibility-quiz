@@ -1,7 +1,9 @@
 import { useState, useRef } from 'react'
-import { getCorrectIds } from '../data/questions'
+import { getCorrectIds, CATEGORIES } from '../data/questions'
 import { resolveQuizUI } from '../quiz-ui/registry'
 import styles from './QuizScreen.module.css'
+
+const categoryName = (id) => CATEGORIES.find((c) => c.id === id)?.name ?? ''
 
 const sameSet = (a, b) => {
   if (a.length !== b.length) return false
@@ -58,6 +60,7 @@ export default function QuizScreen({ questions, onComplete, onQuit }) {
         <div className={styles.headerTop}>
           <span className={styles.progressText}>
             第 {index + 1} / {questions.length} 問
+            {categoryName(question.category) && `・${categoryName(question.category)}`}
           </span>
           <button className={styles.quitBtn} onClick={() => setShowQuitDialog(true)}>
             中断する
