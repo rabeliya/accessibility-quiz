@@ -13,6 +13,7 @@ export default function QuizScreen({ questions, onComplete, onQuit }) {
   const [index, setIndex] = useState(0)
   const [selected, setSelected] = useState(null)
   const [answered, setAnswered] = useState(false)
+  const [showQuitDialog, setShowQuitDialog] = useState(false)
   const answersRef = useRef([])
   const containerRef = useRef(null)
 
@@ -58,8 +59,8 @@ export default function QuizScreen({ questions, onComplete, onQuit }) {
           <span className={styles.progressText}>
             第 {index + 1} / {questions.length} 問
           </span>
-          <button className={styles.quitBtn} onClick={onQuit}>
-            やめる
+          <button className={styles.quitBtn} onClick={() => setShowQuitDialog(true)}>
+            中断する
           </button>
         </div>
         <div className={styles.progressBar}>
@@ -117,6 +118,22 @@ export default function QuizScreen({ questions, onComplete, onQuit }) {
             {index === questions.length - 1 ? '結果を見る' : '次の問題へ'}
           </button>
         </footer>
+      )}
+
+      {showQuitDialog && (
+        <div className={styles.dialogOverlay} role="dialog" aria-modal="true" aria-labelledby="quit-dialog-title">
+          <div className={styles.dialog}>
+            <p id="quit-dialog-title" className={styles.dialogText}>クイズを中断しますか？</p>
+            <div className={styles.dialogActions}>
+              <button className={styles.dialogCancelBtn} onClick={() => setShowQuitDialog(false)}>
+                続ける
+              </button>
+              <button className={styles.dialogQuitBtn} onClick={onQuit}>
+                中断する
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   )

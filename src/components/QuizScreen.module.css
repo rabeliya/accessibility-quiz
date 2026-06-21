@@ -234,3 +234,60 @@
 .nextBtn:hover {
   opacity: 0.92;
 }
+
+/* --- 中断確認ダイアログ --- */
+.dialogOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 20px;
+}
+
+.dialog {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  padding: 28px 24px 20px;
+  width: 100%;
+  max-width: 320px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+}
+
+.dialogText {
+  margin: 0 0 24px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.dialogActions {
+  display: flex;
+  gap: 10px;
+}
+
+.dialogCancelBtn {
+  flex: 1;
+  padding: 12px;
+  border-radius: var(--radius);
+  border: 1.5px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.dialogQuitBtn {
+  flex: 1;
+  padding: 12px;
+  border-radius: var(--radius);
+  border: none;
+  background: var(--color-incorrect);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+}
