@@ -10,9 +10,13 @@
 //   3. questions.js の render.component にそのキー名を書く
 // =============================================================
 import ContrastButton from './ContrastButton'
+import AvatarStatusList from './AvatarStatusList'
+import LineChartSample from './LineChartSample'
 
 export const UI_REGISTRY = {
-  ContrastButton,
+  ContrastButton,       // カテゴリA: コントラスト比
+  AvatarStatusList,     // カテゴリA: 色だけのステータス表示
+  LineChartSample,      // カテゴリA: 色だけで区別する折れ線グラフ
   // 例）今後ここに追加していく：
   // CarouselDemo,        // カテゴリB: 自動再生カルーセル
   // ReflowFrame,         // カテゴリC: 横向きリフロー
