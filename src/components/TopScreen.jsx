@@ -12,10 +12,10 @@ export default function TopScreen({ onStart }) {
         <p className={styles.lead}>
           実装ではなく「デザイン判断」でアクセシビリティを学ぶ。
           <br />
-          Figmaを組む段階で気づける目を養うクイズです。
+          デザイナー向けのクイズです。
         </p>
         <button className={styles.startAll} onClick={() => onStart('all')}>
-          全カテゴリから出題（{QUESTIONS.length}問）
+          全カテゴリからランダム出題（10問）
         </button>
       </header>
 

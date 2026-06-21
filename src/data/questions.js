@@ -1302,8 +1302,9 @@ export function getCorrectIds(question) {
   return Array.isArray(question.correct) ? question.correct : [question.correct]
 }
 
-// 出題する問題を選ぶ。category='all' なら全カテゴリ、それ以外は該当カテゴリのみ。
+// 出題する問題を選ぶ。category='all' ならランダム10問、それ以外は該当カテゴリを全問シャッフル。
 export function selectQuestions(category = 'all') {
   const pool = category === 'all' ? QUESTIONS : QUESTIONS.filter((q) => q.category === category)
-  return shuffle(pool)
+  const shuffled = shuffle(pool)
+  return category === 'all' ? shuffled.slice(0, 10) : shuffled
 }
