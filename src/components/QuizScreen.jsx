@@ -11,7 +11,7 @@ const sameSet = (a, b) => {
   return [...a].sort().every((v, i) => v === sb[i])
 }
 
-export default function QuizScreen({ questions, onComplete, onQuit }) {
+export default function QuizScreen({ questions, category, onComplete, onQuit }) {
   const [index, setIndex] = useState(0)
   const [selected, setSelected] = useState(null)
   const [answered, setAnswered] = useState(false)
@@ -60,7 +60,7 @@ export default function QuizScreen({ questions, onComplete, onQuit }) {
         <div className={styles.headerTop}>
           <span className={styles.progressText}>
             第 {index + 1} / {questions.length} 問
-            {categoryName(question.category) && `・${categoryName(question.category)}`}
+            {category === 'all' ? '・ランダム出題' : categoryName(question.category) && `・${categoryName(question.category)}`}
           </span>
           <button className={styles.quitBtn} onClick={() => setShowQuitDialog(true)}>
             中断する

@@ -29,7 +29,7 @@ function App() {
     <>
       {screen === 'top' && <TopScreen onStart={handleStart} />}
       {screen === 'quiz' && (
-        <QuizScreen questions={questions} onComplete={handleComplete} onQuit={handleQuit} />
+        <QuizScreen questions={questions} category={category} onComplete={handleComplete} onQuit={handleQuit} />
       )}
       {screen === 'result' && <ResultScreen answers={answers} onRetry={handleRetry} />}
     </>
